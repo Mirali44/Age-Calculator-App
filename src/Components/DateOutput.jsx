@@ -7,13 +7,12 @@ function DateOutput({showDate}) {
 
     let years = y - showDate[2]
     let months = m - showDate[1]
-    console.log(months)
+    let days = d - showDate[0]
     
     if(months<0){
       months = (m-showDate[1])+12
       years = (y-showDate[2])-1
     }
-    let days = d - showDate[0]
     if(days<0){
       days = (d - showDate[0])+31
       months = (m - showDate[1])-1
@@ -23,12 +22,27 @@ function DateOutput({showDate}) {
       months = (m - showDate[1])+12
       years = (y-showDate[2])-1
     }
-
+    if(days<0 && showDate[1]==m){
+      days = (d - showDate[0])+31
+      months = 11
+      years = (y-showDate[2])-1
+    }
+    if(days>0 && showDate[1]==m){
+      days = (d - showDate[0])+31
+      months = 0
+      years = (y-showDate[2])-1
+    }
+    if(showDate[0]==d && showDate[1]==m){
+      days = 0
+      months = 0
+      years = y-showDate[2]
+    }
+    
     return ( 
           <div className="outputs">
-      <span className='x'><span className="years">{years? years : '--' }</span>years</span>
-      <span className='x'><span className="months">{months? months : '--'}</span>months</span>
-      <span className='y'><span className="days">{days? days : '--'}</span>days</span>
+      <span className='x'><span className="years">{years? years : 0 }</span>years</span>
+      <span className='x'><span className="months">{months? months : 0}</span>months</span>
+      <span className='y'><span className="days">{days? days : 0}</span>days</span>
     </div>
      );
 }
