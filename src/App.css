@@ -86,11 +86,23 @@ button{
 }
 @media screen and (max-width:600px) {
   .container{
-    width: 380px;
+    width: 364px;
+    border-radius: 18px 18px 100px 18px;
+    /* margin-left: 20px; */
   }
   .inputs,.outputs{
     margin-left: 20px;
   }
+  button{
+  background-color: #8251F3;
+  height: 64px;
+  border-radius: 50%;
+  border-color: #8251F3;
+  position: absolute;
+  top: 135px;
+  left: 140px;
+  cursor: pointer;
+}
 }
 /* button{
   display: none;
