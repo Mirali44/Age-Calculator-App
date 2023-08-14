@@ -22,21 +22,15 @@ function DateOutput({showDate}) {
       months = (m - showDate[1])+12
       years = (y-showDate[2])-1
     }
-    if(days<0 && showDate[1]==m){
-      days = (d - showDate[0])+31
-      months = 11
-      years = (y-showDate[2])-1
-    }
-    if(days>0 && showDate[1]==m){
-      days = (d - showDate[0])+31
-      months = 0
-      years = (y-showDate[2])-1
-    }
     if(showDate[0]==d && showDate[1]==m){
       days = 0
       months = 0
       years = y-showDate[2]
     }
+    if(showDate[0]>d && showDate[1]>=m){
+      months-=1
+    }
+
     
     return ( 
           <div className="outputs">
